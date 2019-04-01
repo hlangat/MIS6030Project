@@ -12,12 +12,15 @@ package Class;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
+import javax.swing.border.LineBorder;
 
 public class Login extends JFrame{
     //Initializing Variables
     JFrame window;
     private JPanel panel;
     
+    private ImageIcon image;
+    private JLabel lblImage;
     private JLabel lblUserName;
     private JLabel lblPassword; 
     
@@ -30,54 +33,61 @@ public class Login extends JFrame{
     //Constructor
     public Login(){
         //Initializing JFrame
-        super("USIU Hostel Management System");
-        window = new JFrame();
-        window.setSize(800, 500);
-        //window.setLayout(null);
-        window.setVisible(true);
-        window.setResizable(true);
-        window.setLocation(250, 50);
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window = new JFrame("USIU Hostel Management System");
+        window.setSize(470, 600);
+        
         
         //Initializing JPanel
         panel = new JPanel();
         panel.setLayout(null);
-        
+               
         //Initializing Labels
-        lblUserName = new JLabel("Email");
+        lblUserName = new JLabel("Email Address");
         lblUserName.setForeground (Color.blue);
         lblUserName.setBackground(Color.red);
-        lblUserName.setBounds (100, 100, 75, 25);
+        lblUserName.setBounds (50, 450, 100, 25);
         
         lblPassword = new JLabel("Password");
         lblPassword.setForeground (Color.blue);
-        lblPassword.setBounds (100, 130, 75, 25);
+        lblPassword.setBounds (50, 480, 100, 25);
         
+        image = new ImageIcon(getClass().getResource("Images/Students.jpg"));
+        lblImage = new JLabel (image);
+        Color cl = new Color (0, 0, 0);					//Setting Splash Window Border Color.
+        lblImage.setBorder (new LineBorder (cl, 1));
+        lblImage.setBounds(0,0,470,400);
         
         txtUserName = new JTextField();
-        txtUserName.setBounds (200, 100, 175, 25);
+        txtUserName.setBounds (180, 450, 200, 25);
         
         txtPassword = new JPasswordField();
-        txtPassword.setBounds (200, 130, 175, 25);
+        txtPassword.setBounds (180, 480, 200, 25);
         
         //Creating class for Action Listening
         ActionHandler handler = new ActionHandler();
         
         cmdLogin = new JButton("Login");
         cmdLogin.addActionListener(handler);
-        cmdLogin.setBounds(100, 160, 75, 25);        
+        cmdLogin.setBounds(50, 510, 100, 25);        
         
         cmdCancel = new JButton("Cancel");
         cmdCancel.addActionListener(handler);
-        cmdCancel.setBounds(200, 160, 75, 25);
+        cmdCancel.setBounds(180, 510, 100, 25);
         
         window.add(panel);
+        panel.add(lblImage);
         panel.add(cmdLogin);
         panel.add(cmdCancel);
         panel.add(lblUserName);
         panel.add(lblPassword);
         panel.add(txtUserName);
         panel.add(txtPassword);
+        
+        window.setVisible(true);
+        window.setLayout(null);
+        window.setResizable(true);
+        window.setLocation(350, 50);
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
     }
     

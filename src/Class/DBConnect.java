@@ -43,8 +43,8 @@ public class DBConnect {
             try{
                 String query = "SELECT * FROM admin WHERE email = '" + email + "'"+"AND password = '"+ password +"'";
                 result = st.executeQuery (query);
-                if(result.next()){
-                    JOptionPane.showMessageDialog(null, "Successful Login.");
+                if(result.next()){                   
+                    getAdmin(email);
                 }else{
                     JOptionPane.showMessageDialog(null, "Invalid email or password!");
                 }
@@ -53,5 +53,9 @@ public class DBConnect {
             }
             
         }
+    }
+    
+    public void getAdmin(String email){
+        HomePage homePage = new HomePage();
     }
 }
